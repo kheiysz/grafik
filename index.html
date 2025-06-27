@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Data Mahasiswa</title>
+
+  <!-- Link ke file CSS eksternal -->
+  <link rel="stylesheet" href="grafik.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Kiri -->
+    <div class="left-section">
+      <div class="header-kampus">
+        <img src="gunadarma.png" alt="Logo" class="logo-kampus" />
+        <h2>UNIVERSITAS GUNADARMA</h2>
+      </div>
+
+      <div class="student-info">
+        <p><strong>Nama:</strong><br>
+          1. Nadya Ramadhanti (11122043)<br>
+          2. Fatikah Puspa Indah (10122481)<br>
+          3. Zhafira (11122561)<br>
+        </p>
+        <p><strong>Kelas:</strong> 3KA22</p>
+        <p><strong>Mata Kuliah:</strong><br>Pemodelan dan Visualisasi Data</p>
+      </div>
+    </div>
+
+    <!-- Kanan -->
+    <div class="right-section">
+      <h1>KONTEN GRAFIK / MATERI</h1>
+      <p>Di bagian ini Anda bisa menampilkan grafik, visualisasi data, atau konten tugas lainnya.</p>
+      <div class="grafik-nama" id="grafikNama"></div>
+      <div class="grafik-container" id="grafikContainer">
+        <!-- Grafik akan ditampilkan di sini -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <div class="tab" onclick="tampilkanGrafik(1)">GRAFIK 1</div>
+    <div class="tab" onclick="tampilkanGrafik(2)">GRAFIK 2</div>
+    <div class="tab" onclick="tampilkanGrafik(3)">GRAFIK 3</div>
+  </div>
+
+  <!-- Link ke file JavaScript eksternal -->
+  <script src="script.js"></script>
+</body>
+</html>

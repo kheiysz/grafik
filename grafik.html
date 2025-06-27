@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Data Mahasiswa</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    .tab.active {
+  background-color: #ccc;
+  font-weight: bold;
+    }
+
+
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .left-section {
+      width: 10cm;
+      background-image: url('gundar1.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 30px;
+      box-sizing: border-box;
+      position: fixed;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .logo-kampus {
+      width: 80px;
+    }
+
+    .header-kampus {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .header-kampus h2 {
+      margin: 0;
+      font-size: 28px;
+      text-shadow: 1px 1px 3px black;
+    }
+
+    .student-info {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    .student-info p {
+      margin: 5px 0;
+      line-height: 1.5;
+    }
+
+    .right-section {
+      margin-left: 10cm;
+      padding: 40px 20px 80px 20px;
+      flex: 1;
+      background-color: #f9f9f9;
+      min-height: 100vh;
+    }
+
+    .right-section h1 {
+      color: #2c3e50;
+    }
+
+    .grafik-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .grafik-nama {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+
+    .grafik-item {
+      width: 300px;
+      text-align: center;
+    }
+
+    .grafik-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: contain;
+      border: 1px solid #ccc;
+      padding: 10px;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .grafik-title {
+      font-size: 14px;
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    .tabs {
+      display: flex;
+      position: fixed;
+      bottom: 0;
+      left: 10cm;
+      right: 0;
+      border-top: 1px solid #ddd;
+      background-color: #f0f0f0;
+      z-index: 10;
+    }
+
+    .tab {
+      padding: 10px 15px;
+      cursor: pointer;
+      border-right: 1px solid #ddd;
+    }
+
+    .tab:hover {
+      background-color: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Kiri -->
+    <div class="left-section">
+      <div class="header-kampus">
+        <img src="gunadarma.png" alt="Logo" class="logo-kampus" />
+        <h2>UNIVERSITAS GUNADARMA</h2>
+      </div>
+
+      <div class="student-info">
+        <p><strong>Nama:</strong><br>
+          1. Nadya Ramadhanti (11122043)<br>
+          2. Fatikah Puspa Indah (10122481)<br>
+          3. Zhafira (11122561)<br>
+        </p>
+        <p><strong>Kelas:</strong> 3KA22</p>
+        <p><strong>Mata Kuliah:</strong><br>Pemodelan dan Visualisasi Data</p>
+      </div>
+    </div>
+
+    <!-- Kanan -->
+    <div class="right-section">
+      <h1>KONTEN GRAFIK / MATERI</h1>
+      <p>Di bagian ini Anda bisa menampilkan grafik, visualisasi data, atau konten tugas lainnya.</p>
+      <div class="grafik-nama" id="grafikNama"></div>
+      <div class="grafik-container" id="grafikContainer">
+        <!-- Grafik akan ditampilkan di sini -->
+      </div>
+    </div>
+  </div>
+
+  <link rel="stylesheet" href="grafik.css">
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <div class="tab" onclick="tampilkanGrafik(1)">GRAFIK 1</div>
+    <div class="tab" onclick="tampilkanGrafik(2)">GRAFIK 2</div>
+    <div class="tab" onclick="tampilkanGrafik(3)">GRAFIK 3</div>
+  </div>
+
+  <script>
+  function tampilkanGrafik(nomor) {
+    const container = document.getElementById('grafikContainer');
+    const title = document.getElementById('grafikNama');
+    container.innerHTML = '';
+    title.innerHTML = '';
+
+    // Hapus semua highlight dari tab
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.classList.remove('active');
+    });
+
+    // Tambahkan highlight ke tab yang aktif
+    document.querySelector(`.tab:nth-child(${nomor})`).classList.add('active');
+
+    let images = [];
+    let nama = '';
+    let judul = [];
+
+    if (nomor === 1) {
+      nama = 'Grafik Bar Chart';
+      images = ['nadya-barchart.png', 'fatikah_grafik_batang.jpg', 'zhafira-grafik_batang.png'];
+      judul = ['Nadya - Grafik Bar Chart', 'Fatikah - Grafik Bar Chart', 'Zhafira - Grafik Bar Chart'];
+    } else if (nomor === 2) {
+      nama = 'Grafik Pie Chart';
+      images = ['nadya-piechart.png', 'fatikah_piechart.jpg', 'zhafira-piechart.png'];
+      judul = ['Nadya - Pie Chart', 'Fatikah - Pie Chart', 'Zhafira - Pie Chart'];
+    } else if (nomor === 3) {
+      nama = 'Grafik Line';
+      images = ['nadya-linechart.png', 'fatikah_grafik_line.jpg', 'zhafira-linechart.png'];
+      judul = ['Nadya - Grafik Line', 'Fatikah - Grafik Line', 'Zhafira - Grafik Line'];
+    }
+
+    title.innerText = nama;
+
+    images.forEach((src, index) => {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'grafik-item';
+
+      const label = document.createElement('div');
+      label.className = 'grafik-title';
+      label.innerText = judul[index];
+
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = judul[index];
+
+      wrapper.appendChild(label);
+      wrapper.appendChild(img);
+      container.appendChild(wrapper);
+    });
+  }
+
+  
+  window.onload = () => tampilkanGrafik(1);
+</script>
+
+</body>
+</html>
